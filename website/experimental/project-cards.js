@@ -122,7 +122,7 @@ const projectsData = [
 
 ];
 
-// Card Swap Animation Class
+// card swap Animation Class
 class ProjectCardSwap {
   constructor(container, options = {}) {
     this.container = container;
@@ -169,7 +169,7 @@ class ProjectCardSwap {
     this.container.style.width = this.options.width + 'px';
     this.container.style.height = this.options.height + 'px';
 
-    // Create cards
+    // cards creatiom
     this.cards.forEach((card, index) => {
       const cardEl = this.createCard(card, index);
       this.container.appendChild(cardEl);
@@ -183,22 +183,22 @@ class ProjectCardSwap {
       this.placeCard(el, slot);
     });
 
-    // Don't auto-start animation - wait for button click
+    // don't auto-start animation - wait for button click
     // this.startAnimation();
 
-    // Setup hover pause
+    // setup hover pause
     if (this.options.pauseOnHover) {
       this.container.addEventListener('mouseenter', () => this.pause());
       this.container.addEventListener('mouseleave', () => this.resume());
     }
 
-    // Setup next project button
+    // setup next project button
     const nextBtn = document.getElementById('next-project-btn');
     if (nextBtn) {
       nextBtn.addEventListener('click', () => this.swap());
     }
 
-    // Add keyboard controls for faster navigation
+    // add keyboard controls for faster navigation
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('project-modal');
       if (!modal || !modal.classList.contains('active')) {
@@ -221,7 +221,7 @@ class ProjectCardSwap {
     cardEl.style.height = this.options.height + 'px';
     cardEl.dataset.index = index;
 
-    // Conditionally add View Project link only if there's a valid link
+    // conditionally add View Project link only if there's a valid link
     const viewProjectLink = (card.link && card.link !== "" && card.link !== "#") ? `
       <a href="${card.link}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">
         View Project →
@@ -239,7 +239,7 @@ class ProjectCardSwap {
       </div>
     `;
 
-    // Add click handler to open modal
+    // add click handler to open modal
     cardEl.addEventListener('click', (e) => {
       e.preventDefault();
       this.openModal(card);
@@ -259,14 +259,14 @@ class ProjectCardSwap {
     const modalLink = document.getElementById('modal-link');
     const modalDemo = document.getElementById('modal-demo');
 
-    // Set content
+    // set content
     modalImage.src = card.image;
     modalImage.alt = card.title;
     modalTitle.textContent = card.title;
     modalSubtitle.textContent = card.subtitle;
     modalDescription.textContent = card.fullDescription || card.description;
 
-    // Set details
+    // set details
     modalDetails.innerHTML = `
       <div class="detail-item">
         <div class="detail-label">Role</div>
@@ -302,7 +302,7 @@ class ProjectCardSwap {
       modalDetails.innerHTML += highlightsHTML;
     }
 
-    // Set links - conditionally show/hide based on availability
+    // set links - conditionally show/hide based on availability
     if (card.link && card.link !== "" && card.link !== "#") {
       modalLink.href = card.link;
       modalLink.style.display = "inline-flex";
@@ -355,7 +355,7 @@ class ProjectCardSwap {
     const tl = gsap.timeline();
     this.timeline = tl;
 
-    // Drop front card
+    // drop front card
     tl.to(elFront, {
       y: '+=500',
       duration: this.config.durDrop,
@@ -378,7 +378,7 @@ class ProjectCardSwap {
       }, `promote+=${i * 0.15}`);
     });
 
-    // Return front card to back
+    // return front card to back
     const backSlot = this.makeSlot(this.cards.length - 1);
     tl.addLabel('return', `promote+=${this.config.durMove * this.config.returnDelay}`);
     
@@ -414,7 +414,7 @@ class ProjectCardSwap {
     const tl = gsap.timeline();
     this.timeline = tl;
 
-    // Demote other cards
+    // demote other cards
     tl.addLabel('demote');
     rest.forEach((idx, i) => {
       const el = this.cardElements[idx];
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close on background click
+  // close on background click
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close on Escape key
+  // close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       modal.classList.remove('active');

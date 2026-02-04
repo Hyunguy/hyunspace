@@ -8,7 +8,7 @@ if (window.gsap && window.InertiaPlugin) {
 }
 
 // ==========================
-// Configuration
+// configuration
 // ==========================
 const CONFIG = {
   REVEAL_TEXT: {
@@ -38,9 +38,9 @@ const CONFIG = {
 };
 
 const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-// Co-op glow effect disabled - was interfering with typewriter animation
+// co-op glow effect disabled - was interfering with typewriter animation
 // ==========================
-// Utility
+// utility
 // ==========================
 const throttle = (func, limit) => {
   let lastCall = 0;
@@ -69,7 +69,7 @@ function getRandomCharacter() {
 }
 
 // ==========================
-// Reveal / Glitch Text Effect
+// reveal / glitch Text Effect
 // ==========================
 class RevealTextEffect {
   constructor(element) {
@@ -144,7 +144,7 @@ class RevealTextEffect {
 }
 
 // ==========================
-// Variable Proximity
+// variable Proximity
 // ==========================
 function parseFontVariationSettings(settingsStr) {
   const map = new Map();
@@ -593,7 +593,7 @@ class DotGrid {
 }
 
 // ==========================
-// Bubble Menu Component
+// bubble Menu Component
 // ==========================
 class BubbleMenu {
   constructor() {
@@ -659,7 +659,7 @@ class BubbleMenu {
 }
 
 // ==========================
-// Card Swap with Navigation Buttons
+// card Swap with Navigation Buttons
 // ==========================
 class CardSwap {
   constructor(container, options = {}) {
@@ -723,24 +723,24 @@ class CardSwap {
   init() {
     this.render();
     this.createNavigationButtons();
-    // Auto-rotation disabled - users control navigation with arrows
+    // auto-rotation disabled - users control navigation with arrows
     // if (!prefersReducedMotion) this.startRotation();
     this.setupShuffleButton();
   }
 
   createNavigationButtons() {
-    // Create navigation container
+    // create navigation container
     const navContainer = document.createElement('div');
     navContainer.className = 'card-nav-buttons';
     
-    // Previous button
+    // previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'card-nav-btn card-nav-prev';
     prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
     prevBtn.setAttribute('aria-label', 'Previous project');
     prevBtn.addEventListener('click', () => this.previous());
     
-    // Next button
+    // next button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'card-nav-btn card-nav-next';
     nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
@@ -750,7 +750,7 @@ class CardSwap {
     navContainer.appendChild(prevBtn);
     navContainer.appendChild(nextBtn);
     
-    // Insert navigation after the container
+    // insert navigation after the container
     this.container.parentElement.appendChild(navContainer);
   }
 
@@ -841,7 +841,7 @@ class CardSwap {
 }
 
 // ==========================
-// Glitch orchestration
+// glitch orchestration
 // ==========================
 function initGlitchInView() {
   const elements = document.querySelectorAll(".reveal-text[data-glitch='inview']");
@@ -906,7 +906,7 @@ async function initGlitchOnLoad() {
 }
 
 // ==========================
-// Text Type Class
+// text Type Class
 // ==========================
 class TextType {
   constructor(el) {
@@ -994,7 +994,7 @@ class TextType {
 }
 
 // ==========================
-// Application Init
+// application Init
 // ==========================
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("DOM loaded, initializing...");
@@ -1046,7 +1046,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // Text typing effects
+  // text typing effects
   const typeElements = document.querySelectorAll("[data-text-type]");
   console.log("Found typing elements:", typeElements.length);
   
